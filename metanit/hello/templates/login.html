@@ -1,0 +1,61 @@
+{% load static %}
+<link href="{% static 'myapp/css/style2.css' %}" rel="stylesheet">
+<script src="{% static 'myapp/reg.js' %}" defer></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous">
+
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form action="{% url 'register' %}" name="form2" id='form2' method="POST">
+            {% csrf_token %}
+            <h1>Регистрация</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>или используйте свой E-mail для регистрации</span>
+            <input type="text" placeholder="Имя" name="username" required/>
+            <input type="text" placeholder="Фамилия" name="surname" required/>
+            <input type="email" placeholder="Email" name="email" required/>
+            <input type="password" placeholder="Пароль" name="password" required/>
+            <input type="password" placeholder="Повторите пароль" name="passwordRe" required/>
+            {% if error %}
+                <div class="error">{{ error }}</div>
+            {% endif %}
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form action="{% url 'login' %}" method="POST" name="form" id="form">
+            {% csrf_token %}
+            <h1>Авторизация</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>или используйте свой аккаунт</span>
+            <input type="email" placeholder="Email" name="email" required/>
+            <input type="password" placeholder="Пароль" name="password" required/>
+            <a href="#">Забыли пароль?</a>
+
+                        <button type="submit">Вход</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Добро пожаловать!</h1>
+                <p>Чтобы оставаться на связи с нами, пожалуйста, войдите в систему с вашей личной информацией</p>
+                <button class="ghost" id="signIn">Авторизация</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Привет, Друг!</h1>
+                <p>Введите свои личные данные и начните путешествие вместе с нами</p>
+                <button class="ghost" id="signUp">Регистрация</button>
+            </div>
+        </div>
+    </div>
+</div>
